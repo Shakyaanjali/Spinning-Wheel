@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning wheel | helpme_coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div class="arrow"></div>
+        <div id="wheel">
+            <div class="inner-wheel" id="inner-wheel">
+                <div class="sec"><span class="langauge">C#</span></div>
+                <div class="sec"><span class="langauge">Js</span></div>
+                <div class="sec"><span class="langauge">PHP</span></div>
+                <div class="sec"><span class="langauge">CPP</span></div>
+                <div class="sec"><span class="langauge">JAVA</span></div>
+                <div class="sec"><span class="langauge" style="font-size: 15px;">PYTHON</span></div>
+            </div>
+            <div id="spin" onclick="spinWheel()">
+                <div id="inner-spin"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        function spinWheel() {
+            var wheel = document.getElementById('inner-wheel');
+            var spinButton = document.getElementById('spin');
+
+            // Disable the spin button during the animation
+            spinButton.style.pointerEvents = 'none';
+
+            // Randomly determine the degree of rotation (e.g., between 5 and 15 spins)
+            var randomRotation = Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+
+            // Calculate the total degrees to rotate
+            var totalDegrees = randomRotation * 360;
+
+            // Rotate the wheel
+            wheel.style.transform = 'rotate(' + totalDegrees + 'deg)';
+
+            // Wait for the animation to complete and enable the spin button
+            setTimeout(function() {
+                spinButton.style.pointerEvents = 'auto';
+            }, 6000); // 6 seconds (sync with CSS transition duration)
+        }
+    </script>
+</body>
+</html>
